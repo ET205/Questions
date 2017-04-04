@@ -1,0 +1,13 @@
+<script>
+    document.write("<div style='font-size:80px; text-align:center; padding-top:24%; font-family:Century Gothic;'>");
+    var rand = 0;
+    for (var i = 0; i < 20; i++) {
+	var rand = Math.random();
+	if (parseInt(rand * 10) > 5) {
+	    document.write("1 ");
+	} else {
+	    document.write("0 ");
+	}
+    }
+    document.write("</div>");
+</script>

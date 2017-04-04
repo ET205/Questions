@@ -1,0 +1,182 @@
+<html>
+    <head>
+	<title>Rock, Paper, Scissor!</title>
+    </head>
+    <body>
+	<script>
+	    window.onload = function () {
+		//SETUP
+		var points = 0;
+		var pl_points = 0;
+		var cm_points = 0;
+		while (true) {
+		    if (points == 0 || points == null || isNaN(points)) {
+			points = +prompt("Number of points you want to play upto...");
+		    } else {
+			break;
+		    }
+		}
+		//PLAY
+		while (true) {
+		    var userChoice = user_choice();
+		    var computerChoice = comp_choice();
+		    var player_win = compare(userChoice, computerChoice);
+		    if (player_win != undefined) {
+			//UPDATE SCORE
+			if (player_win == true) {
+			    pl_points = pl_points + 1;
+			} else {
+			    cm_points = cm_points + 1;
+			}
+			alert("You:" + pl_points + "/" + points + "       Computer:" + cm_points + "/" + points);
+			//CHECK SCORE AND DECLARE WINNER
+			if (pl_points === points) {
+			    alert("Congratulations! You've won!");
+			    break;
+			} else if (cm_points === points) {
+			    alert("WTF! You've lost! Sad life.. ( ._.)");
+			    break;
+			}
+		    } else {
+			alert("Tie!");
+			alert("You:" + pl_points + "/" + points + "       Computer:" + cm_points + "/" + points);
+		    }
+		}
+	    };
+
+	    var user_choice = function () {
+		var u_choice = "";
+		while (true) {
+		    if (u_choice === "rock" || u_choice === "paper" || u_choice === "scissors") {
+			return u_choice;
+		    } else {
+			u_choice = prompt("Do you choose rock, paper or scissors?");
+			if (typeof u_choice == "string") {
+			    u_choice = u_choice.toLowerCase();
+			}
+		    }
+		}
+	    };
+
+	    var comp_choice = function () {
+		var computerChoice = Math.random();
+		if (computerChoice < 0.33) {
+		    computerChoice = "rock";
+		} else if (computerChoice <= 0.66) {
+		    computerChoice = "paper";
+		} else {
+		    computerChoice = "scissors";
+		}
+		return computerChoice;
+	    };
+
+	    var compare = function (choice1, choice2) {
+		if (choice1 === "rock") {
+		    if (choice2 === "scissors") {
+			alert("Computer: Scissor; Round Won!");
+			return true;
+		    } else if (choice2 === "paper") {
+			alert("Computer: Paper; Round Lost!");
+			return false;
+		    }
+		} else if (choice1 === "paper") {
+		    if (choice2 === "rock") {
+			alert("Computer: Rock; Round Won!");
+			return true;
+		    } else if (choice2 === "scissors") {
+			alert("Computer: Scissor; Round Lost!");
+			return false;
+		    }
+		} else if (choice1 === "scissors") {
+		    if (choice2 === "paper") {
+			alert("Computer: Paper; Round Won!");
+			return true;
+		    } else if (choice2 === "rock") {
+			alert("Computer: Rock; Round Lost!");
+			return false;
+		    }
+		}
+	    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	    /*
+	     var userChoice = prompt("Do you choose rock, paper or scissors?");
+	     while (userChoice === null) {
+	     var sure = prompt("Are you sure, you want to exit the game?");
+	     sure = sure.toLowerCase();
+	     if (sure === "yes") {
+	     
+	     } else if (sure === "no") {
+	     userChoice = prompt("Do you choose rock, paper or scissors?");
+	     while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
+	     userChoice = prompt("Do you choose rock, paper or scissors?");
+	     userChoice = userChoice.toLowerCase();
+	     }
+	     } else {
+	     while (sure !== "yes" && sure !== "no") {
+	     sure = prompt("Are you sure, you want to exit the game?");
+	     sure = sure.toLowerCase();
+	     }
+	     }
+	     }
+	     
+	     userChoice = userChoice.toLowerCase()
+	     while (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
+	     userChoice = prompt("Do you choose rock, paper or scissors?");
+	     userChoice = userChoice.toLowerCase();
+	     }
+	     
+	     var computerChoice = Math.random();
+	     if (computerChoice < 0.34) {
+	     computerChoice = "rock";
+	     } else if (computerChoice <= 0.67) {
+	     computerChoice = "paper";
+	     } else {
+	     computerChoice = "scissors";
+	     }
+	     setTimeout(function() { alert("Computer: " + computerChoice);
+	     
+	     var compare = function (choice1, choice2)
+	     {
+	     if (choice1 === choice2)
+	     {
+	     return "The result is a tie!";
+	     } else if (choice1 === "rock") {
+	     if (choice2 === "scissors") {
+	     return "Rock wins. You won!";
+	     } else {
+	     return "Paper wins. You lost!";
+	     }
+	     } else if (choice1 === "paper") {
+	     if (choice2 === "rock") {
+	     return "Paper wins. You won!"
+	     } else {
+	     return "Scissors wins. You lost!"
+	     }
+	     } else if (choice1 === "scissors") {
+	     if (choice2 === "paper") {
+	     return "Scissors wins. You won!"
+	     } else {
+	     return "Rock wins. You lost!"
+	     }
+	     }
+	     };
+	     setTimeout(function() { alert(compare(userChoice, computerChoice))
+	     */
+	</script>
+    </body>
+</html>
